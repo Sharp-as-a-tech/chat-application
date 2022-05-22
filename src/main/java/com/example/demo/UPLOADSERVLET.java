@@ -25,7 +25,7 @@ public class UPLOADSERVLET extends HttpServlet{
         public void init( ){
         }
         public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, java.io.IOException {
-//check for file upload request
+
 // boolean isMultipart=ServletFileUpload.isMultipartContent(request);
 //response.getWriter().print(isMultipart);
             // Create a factory for disk-based file items
