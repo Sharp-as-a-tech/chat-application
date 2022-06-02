@@ -32,8 +32,7 @@ public class UPLOADSERVLET extends HttpServlet{
 // Set overall request size constraint
             upload.setSizeMax(maxRequestSize);
 // Parse the request
-            try
-            {
+            try {
                 List items = upload.parseRequest(request);
 // Process the uploaded items
                 Iterator iter = items.iterator();
@@ -43,44 +42,45 @@ public class UPLOADSERVLET extends HttpServlet{
                     } else {
                         //response.getWriter().println("a file is uploaded");
                         String fieldName = item.getFieldName();
-                        String fileName=item.getName();
+                        String fileName = item.getName();
 //response.getWriter().println(fileName.lastIndexOf('/')+1);
 // fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-                        fileName = fileName.substring(fileName.lastIndexOf('\\')+1);
+                        fileName = fileName.substring(fileName.lastIndexOf('\\') + 1);
                         String contentType = item.getContentType();
                         boolean isInMemory = item.isInMemory();
                         long sizeInBytes = item.getSize();
                         InputStream uploadedStream = item.getInputStream();
-                        item.write(new File("D:\\PROJECT\\chat\\WebContent\\"+fileName));
+                        item.write(new File("D:\\PROJECT\\chat\\WebContent\\" + fileName));
                         uploadedStream.close();
-                        int x=contentType.indexOf('/');
-                        contentType=contentType.substring(0, x);
+                        int x = contentType.indexOf('/');
+                        contentType = contentType.substring(0, x);
                         Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-                        Connection con=DriverManager.getConnection("jdbc:odbc:abc");
-                        String query="insert into sharedfiles values(?,?,?)";
-                        PreparedStatement pstmt=con.prepareStatement(query);
-                        HttpSession httpsession=request.getSession();
-                        String loginid=(String)httpsession.getAttribute("login");
+                        Connection con = DriverManager.getConnection("jdbc:odbc:abc");
+                        String query = "insert into sharedfiles values(?,?,?)";
+                        PreparedStatement pstmt = con.prepareStatement(query);
+                        HttpSession httpsession = request.getSession();
+                        String loginid = (String) httpsession.getAttribute("login");
                         //response.getWriter().println("a file is uploaded");
                         String fieldName = item.getFieldName();
-                        String fileName=item.getName();
-                //response.getWriter().println(fileName.lastIndexOf('/')+1);
-                // fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-                        fileName = fileName.substring(fileName.lastIndexOf('\\')+1);
+                        String fileName = item.getName();
+                        //response.getWriter().println(fileName.lastIndexOf('/')+1);
+                        // fileName = fileName.substring(fileName.lastIndexOf('/')+1);
+                        fileName = fileName.substring(fileName.lastIndexOf('\\') + 1);
                         String contentType = item.getContentType();
                         boolean isInMemory = item.isInMemory();
                         long sizeInBytes = item.getSize();
                         InputStream uploadedStream = item.getInputStream();
-                        item.write(new File("D:\\PROJECT\\chat\\WebContent\\"+fileName));
+                        item.write(new File("D:\\PROJECT\\chat\\WebContent\\" + fileName));
                         uploadedStream.close();
-                        int x=contentType.indexOf('/');
-                        contentType=contentType.substring(0, x);
+                        int x = contentType.indexOf('/');
+                        contentType = contentType.substring(0, x);
                         Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-                        Connection con=DriverManager.getConnection("jdbc:odbc:abc");
-                        String query="insert into sharedfiles values(?,?,?)";
-                        PreparedStatement pstmt=con.prepareStatement(query);
-                        HttpSession httpsession=request.getSession();
-                        String loginid=(String)httpsession.getAttribute("login");
+                        Connection con = DriverManager.getConnection("jdbc:odbc:abc");
+                        String query = "insert into sharedfiles values(?,?,?)";
+                        PreparedStatement pstmt = con.prepareStatement(query);
+                        HttpSession httpsession = request.getSession();
+                        String loginid = (String) httpsession.getAttribute("login");
 
                     }
-}
+                }
+            }
