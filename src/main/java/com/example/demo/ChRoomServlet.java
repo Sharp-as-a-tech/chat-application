@@ -1,11 +1,23 @@
 package com.example.demo;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.text.*;
 import java.util.*;
 import java.sql.*;
-public class ChRoomServlet  extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet{
+
+public class ChRoomServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
     static final long serialVersionUID = 1L;
     public ChRoomServlet() {
         super();
@@ -51,29 +63,29 @@ public class ChRoomServlet  extends javax.servlet.http.HttpServlet implements ja
         }
         out.close();
     }
-/* (non-Java-doc)
-* @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest request,
-HttpServletResponse response)
-*/
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /* (non-Java-doc)
+    * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest request,
+    HttpServletResponse response)
+    */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 // TODO Auto-generated method stub
-    response.setContentType("text/html");
-    ChatRooms chatroom=getRoom(request,response);
-    if(chatroom==null)
-    {
-        return;
+        response.setContentType("text/html");
+        ChatRooms chatroom=getRoom(request,response);
+        if(chatroom==null)
+        {
+            return;
+        }
+        String s=getProfileName(request);
+        String s1=request.getParameter("msg");
+        if(s1!=null&&s1.length()!=0)
+        {
+            DateFormat d=new SimpleDateFormat("hh:mm");
+            String time=d.format(new java.util.Date());
+            s1="[ "+time+" ] "+s1;
+            chatroom.joinChatEntry(new ChatRoomEntry(s,s1));
+        }
+        messageFrame(response,chatroom);
     }
-    String s=getProfileName(request);
-    String s1=request.getParameter("msg");
-    if(s1!=null&&s1.length()!=0)
-    {
-        DateFormat d=new SimpleDateFormat("hh:mm");
-        String time=d.format(new java.util.Date());
-        s1="[ "+time+" ] "+s1;
-        chatroom.joinChatEntry(new ChatRoomEntry(s,s1));
-    }
-    messageFrame(response,chatroom);
-}
     private String getProfileName(HttpServletRequest request)
     {
         HttpSession httpsession=request.getSession(true);
@@ -142,8 +154,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         out.println("<head><title>"+chatroom.getName()+"</title></head>");
         out.println("<frameset rows='320,180'>");
         out.println("<frame src=ChRoomServlet?list=true name=list SCROLLING=AUTO>");
-                out.println("<frame src=ChRoomServlet?list=false name=form SCROLLING=no>");
-                        out.println("</frameset>");
+        out.println("<frame src=ChRoomServlet?list=false name=form SCROLLING=no>");
+        out.println("</frameset>");
         out.println("</html>");
     }
     private void writeMessage(PrintWriter out,ChatRooms chatroom,String s)
@@ -161,7 +173,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         }
         else
         {
-            for(Iterator iterator=chatroom.iterator();iterator.hasNext();)
+            for(Iterator iterator = chatroom.iterator(); iterator.hasNext();)
             {
                 ChatRoomEntry chatentry=(ChatRoomEntry)iterator.next();
                 if(chatentry!=null)
@@ -183,5 +195,4 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 
     }
-    }
-
+}
