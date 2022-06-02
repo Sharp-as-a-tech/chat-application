@@ -7,9 +7,6 @@ import java.util.*;
 import java.sql.*;
 public class ChRoomServlet  extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet{
     static final long serialVersionUID = 1L;
-    /* (non-Java-doc)
-     * @see javax.servlet.http.HttpServlet#HttpServlet()
-     */
     public ChRoomServlet() {
         super();
     }
@@ -183,6 +180,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     public void destroy()
     {
         System.out.print("chroomservlet");
+
+
     }
     }
 
