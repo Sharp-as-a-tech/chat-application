@@ -1,15 +1,22 @@
 package com.example.demo;
-import java.io.*;
-import java.util.*;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
+
 import org.apache.commons.fileupload.*;
 import org.apache.commons.fileupload.disk.*;
 import org.apache.commons.fileupload.servlet.*;
 import org.apache.commons.io.*;
-import java.sql.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Iterator;
+import java.util.List;
 public class UPLOADSERVLET extends HttpServlet{
         //private boolean isMultipart;
         private int maxMemorySize = 50 * 1024;
@@ -17,9 +24,8 @@ public class UPLOADSERVLET extends HttpServlet{
         private File tempDirectory;
         public void init( ){
         }
-        public void doPost(HttpServletRequest request,HttpServletResponse response)
-                throws ServletException, java.io.IOException {
-//check for file upload request
+        public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, java.io.IOException {
+
 // boolean isMultipart=ServletFileUpload.isMultipartContent(request);
 //response.getWriter().print(isMultipart);
             // Create a factory for disk-based file items
@@ -43,8 +49,8 @@ public class UPLOADSERVLET extends HttpServlet{
                         //response.getWriter().println("a file is uploaded");
                         String fieldName = item.getFieldName();
                         String fileName = item.getName();
-//response.getWriter().println(fileName.lastIndexOf('/')+1);
-// fileName = fileName.substring(fileName.lastIndexOf('/')+1);
+                        //response.getWriter().println(fileName.lastIndexOf('/')+1);
+                        //fileName = fileName.substring(fileName.lastIndexOf('/')+1);
                         fileName = fileName.substring(fileName.lastIndexOf('\\') + 1);
                         String contentType = item.getContentType();
                         boolean isInMemory = item.isInMemory();
@@ -80,7 +86,21 @@ public class UPLOADSERVLET extends HttpServlet{
                         PreparedStatement pstmt = con.prepareStatement(query);
                         HttpSession httpsession = request.getSession();
                         String loginid = (String) httpsession.getAttribute("login");
+                        pstmt.setString(1,fileName);
+                        pstmt.setString(2,contentType);
+                        pstmt.setString(3,loginid);
+                        pstmt.execute();
+                    } }
+            }catch(Exception e)
+            {
+                response.getWriter().println(e);
+            }
+            RequestDispatcher view=request.getRequestDispatcher("viewfiles.jsp");
+            view.forward(request,response);
+        }
+    public void doGet(HttpServletRequest request,HttpServletResponse response)
+            throws ServletException, java.io.IOException {
+        doPost(request,response);
+    }
 
                     }
-                }
-            }
