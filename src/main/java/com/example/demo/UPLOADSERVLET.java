@@ -43,8 +43,8 @@ public class UPLOADSERVLET extends HttpServlet{
                         //response.getWriter().println("a file is uploaded");
                         String fieldName = item.getFieldName();
                         String fileName = item.getName();
-//response.getWriter().println(fileName.lastIndexOf('/')+1);
-// fileName = fileName.substring(fileName.lastIndexOf('/')+1);
+                        //response.getWriter().println(fileName.lastIndexOf('/')+1);
+                        //fileName = fileName.substring(fileName.lastIndexOf('/')+1);
                         fileName = fileName.substring(fileName.lastIndexOf('\\') + 1);
                         String contentType = item.getContentType();
                         boolean isInMemory = item.isInMemory();
@@ -84,3 +84,5 @@ public class UPLOADSERVLET extends HttpServlet{
                     }
                 }
             }
+        }
+        
