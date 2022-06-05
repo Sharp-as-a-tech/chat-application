@@ -23,6 +23,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 // TODO Auto-generated method stub
     doPost(request,response);
 }
+//request and response 
     /* (non-Java-doc)
     * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest request,
     HttpServletResponse response)
