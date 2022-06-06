@@ -110,4 +110,4 @@ public static void main(String[] args)
             textarea1.setText(e.getMessage());
         }
     }
-}
+}// GUI is better than commands 
