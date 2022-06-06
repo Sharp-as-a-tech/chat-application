@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//class IMAGEDOWNLOADER
 public class IMAGEDOWNLOADER extends javax.servlet.http.HttpServlet implements
         javax.servlet.Servlet{
 
