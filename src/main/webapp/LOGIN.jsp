@@ -39,10 +39,8 @@
         <td></td> <td> <form action=loginhandler.jsp method=post> <table align=center cellpadding=5> <tr> <td>UserName</td> <td><input type=text name=userName></td>
     </tr> <tr> <td>Password</td> <td><input type=password name=password></td>
     </tr> <tr> <td>Type</td> <td><label><%= request.getParameter("type")%></label></td>
-    </tr> <tr> <td><input type=hidden name=type
-                          value=<%= request.getParameter("type")%>></td>
-    </tr> <tr> <td></td> <td align=center><input type=submit
-                                                 value=Submit></td>
+    </tr> <tr> <td><input type=hidden name=type value=<%= request.getParameter("type")%>></td>
+    </tr> <tr> <td></td> <td align=center><input type=submit value=Submit></td>
     </tr>
     </table>
     </form>
