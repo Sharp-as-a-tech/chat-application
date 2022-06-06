@@ -14,10 +14,7 @@ public class AdminChatServlet extends javax.servlet.http.HttpServlet implements
     public AdminChatServlet() {
         super();
     }
-/* (non-Java-doc)
-* @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest request,
-HttpServletResponse response)
- */
+
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
         ServletException, IOException {
 // TODO Auto-generated method stub
