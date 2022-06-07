@@ -9,11 +9,13 @@ each other and also client to main server. So we have used the same concept here
 we are connecting two client or client and server with each other and by providing 
 the IP address we can talk with each other.
 
-##Contributers
-##SoHaila NekHat :chatroom
-##Zahida Safi :upload 
-##Sabrina Hayat : delete and add 
-##Adela Amain: login
-##Yasna Popal: chat client
-
+#Contributers
+SoHaila NekHat :chatroom
+Zahida Safi :upload 
+Sabrina Hayat : delete and add 
+Adela Amain: login and admin
+Yasna Popal: chat client
+#Liciense
+MIT License
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
