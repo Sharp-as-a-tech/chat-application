@@ -11,7 +11,7 @@ the IP address we can talk with each other.
 
 #Contributers
 SoHaila NekHat :chatroom
-Zahida Safi :upload 
+Zahida Safi :upload and image downloader 
 Sabrina Hayat : delete and add 
 Adela Amain: login and admin
 Yasna Popal: chat client
