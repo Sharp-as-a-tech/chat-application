@@ -1,6 +1,6 @@
 # chat-application
 LAN chat and file sharing application.          
-LAN chat application is one of easiest way to chat with a your friends through 
+LAN chat application is one of easiest way to chat with your friends through 
 LAN. No internet connection is needed. The only thing which requires is server IP 
 address and you will be able to connect to others members through LAN . It can 
 help you to talk to your friends even you both do not have internet connection. As 
