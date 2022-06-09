@@ -43,6 +43,7 @@ public static void main(String[] args)
         add(label2);
         textarea2 = new TextArea("", 7, 45,
                 TextArea.SCROLLBARS_VERTICAL_ONLY);
+        //comments
         textarea2.setBounds(20, 260, 340, 120);
         textarea2.setForeground(Color.RED);
         add(textarea2);
